@@ -47,6 +47,7 @@ module Rack
           return Rack::Response.new(["Invalid Facebook signature"], 400).finish
         end
         env['REQUEST_METHOD'] = fb_params["request_method"] if fb_params["request_method"]
+        env['ORIGINAL_PARAMS'] = request.params.dup
         convert_parameters!(request.params)
         @app.call(env)
       end
