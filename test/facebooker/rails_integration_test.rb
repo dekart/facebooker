@@ -1198,7 +1198,7 @@ class RailsHelperTest < Test::Unit::TestCase
     @h.expects(:capture).returns("Inner Stuff")
     @h.fb_serverfbml(:condition=>"somejs") do
     end
-    assert_equal "<fb:serverfbml condition=\"somejs\">Inner Stuff</fb:serverfbml>",@h.output_buffer
+    assert_equal "<fb:serverfbml condition=\"somejs\"><script type=\"text/fbml\">Inner Stuff</script></fb:serverfbml>",@h.output_buffer
   end
   
   def test_fb_share_button
